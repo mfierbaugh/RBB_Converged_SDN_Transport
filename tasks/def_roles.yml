@@ -70,14 +70,14 @@
   - SR-MPLS
   - MPLS_TE
 
-- name: Configure SR PCE
-  hosts: PCE
-  gather_facts: no
-  connection: local
-
-  roles:
-  - baseconf
-  - Data Plane
-  - IGP
-  - BGP
-  - PCE
+#- name: Configure SR PCE
+#  hosts: PCE
+#  gather_facts: no
+#  connection: local
+#
+#  roles:
+#  - baseconf
+#  - Data Plane
+#  - IGP
+#  - BGP
+#  - PCE
