@@ -1,11 +1,12 @@
-# Usage
-
-This project is a full CI/CD pipline for configuration management. All configuration changes should be made by logging an issue then merging the changes to the Development branch then Test branch.
+# Features 
 
 Features in this playbook:
  - Segment Routing using ISIS
  - Transport Independant Loop Free Alternate (TI-LFA)
 
+# Usage
+
+This project is a full CI/CD pipline for configuration management. All configuration changes should be made by logging an issue then merging the changes to the Development branch then Test branch.
 
 WARNING - this is a full commit replace and will restore the Converged SDN Transport configuration.
 
