@@ -1,0 +1,31 @@
+{% if igp == 'isis' %}
+{% for isis in isis_instances %}
+router isis {{ isis.name }}
+ address-family ipv4 unicast
+  mpls traffic-eng level-2-only
+  mpls traffic-eng router-id Loopback0
+{% endfor %}
+{% endif %}
+!
+!
+ipv4 unnumbered mpls traffic-eng Loopback0
+mpls traffic-eng
+!
+segment-routing
+ traffic-eng
+{% for policy in sr_policy if policy.enable %}
+  policy {{policy.name}}
+   color {{policy.color}} end-point ipv4 {{policy.endpoint}}
+   candidate-paths
+    preference 100
+     dynamic
+      pcep
+      !
+     !
+     constraints
+      disjoint-path group-id 1 type node
+     !
+    !
+   !
+  !
+{% endfor %}

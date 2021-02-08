@@ -1,0 +1,8 @@
+!
+{% for user in users -%}
+username {{ user.name }}
+ group root-lr
+ secret {{ user.secret }}
+!
+{% endfor %}
+!

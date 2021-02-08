@@ -1,0 +1,54 @@
+---
+- name: Configure Provider Edge
+  hosts: ProviderEdge
+  gather_facts: no
+  connection: local
+
+  roles:
+  - baseconf
+  - Data Plane
+
+- name: Configure Access
+  hosts: Access
+  gather_facts: no
+  connection: local
+
+  roles:
+  - baseconf
+  - Data Plane
+
+- name: Configure Core
+  hosts: Core
+  gather_facts: no
+  connection: local
+
+  roles:
+  - baseconf
+  - Data Plane
+
+- name: Configure ASBR
+  hosts: ASBR
+  gather_facts: no
+  connection: local
+
+  roles:
+  - baseconf
+  - Data Plane
+
+- name: Configure Routed Optical Nodes
+  hosts: Routed_Optical
+  gather_facts: no
+  connection: local
+
+  roles:
+  - baseconf
+  - Data Plane
+
+#- name: Configure SR PCE
+#  hosts: PCE
+#  gather_facts: no
+#  connection: local
+#
+#  roles:
+#  - baseconf
+#  - Data Plane

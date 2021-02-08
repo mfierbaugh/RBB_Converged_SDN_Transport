@@ -1,0 +1,54 @@
+id: 24
+os: iosxr
+xr_64: true
+management_int: 0/RP0/CPU0/0
+management_ip: 198.18.200.24
+management_prefix: /24
+management_gw: 198.18.200.1
+max_sid_depth: 6
+asn: 65000
+bgp_rrc: false
+bgp_rr: false
+
+#enable LDP
+mpls_ldp: false
+ldp_over_mplste: false
+
+#enable rsvp
+mpls_rsvp: false
+
+# Enable SR
+sr: true
+mpls_te: false
+
+isis_instances:
+  - {name: RTP_LAB, id: 1, sr: true, tilfa: true}
+
+optics:
+  - {enable: true, controller: 0/0/1/2, descr: "CFP2 DWDM - MD48-ODDE - RBB.NCS5504.23 Optics 0/0/1/2 ", frequency: 19610, speed: 200G, mod: 16qam, fec: 15sdfec}
+  - {enable: true, controller: 0/0/2/2, descr: "CFP2 DWDM - MD48-ODDE - RBB.NCS55A2.25 Optics 0/0/1/2 ", frequency: 19600, speed: 200G, mod: 16qam, fec: 15sdfec}
+
+network_interfaces:
+  - {name: HundredGigE0/0/1/0, descr: "RBB.8201.103 HundredGigE0/0/0/35", isis_inst: RTP_LAB, color: RED, te_metric: 120, ipv4: 10.24.103.0, mask: 255.255.255.254, ipv6: '10:23:103::0/127', mtu: 9192}
+  - {name: HundredGigE0/0/1/1, descr: "RBB.8201.102 HundredGigE0/0/0/35", isis_inst: RTP_LAB, color: RED, te_metric: 120, ipv4: 10.24.102.0, mask: 255.255.255.254, ipv6: '10:23:102::0/127', mtu: 9192}
+  - {name: HundredGigE0/1/0/0, descr: "RBB.NCS55A2.26 HundredGigE0/0/1/0", isis_inst: RTP_LAB, color: RED, te_metric: 120, ipv4: 10.24.26.0, mask: 255.255.255.254, ipv6: '10:24:26::0/127', mtu: 9192}
+  - {name: Bundle-Ether10, descr: "DWDM 2x100G Bundle to RBB.NCS5504.23", isis_inst: RTP_LAB, color: RED, te_metric: 120, ipv4: 10.23.24.1, mask: 255.255.255.254, ipv6: '10:23:24::1/127', mtu: 9192}
+  - {name: Bundle-Ether20, descr: "DWDM 2x100G Bundle to RBB.NCS55A2.25", isis_inst: RTP_LAB, color: RED, te_metric: 120, ipv4: 10.24.25.0, mask: 255.255.255.254, ipv6: '10:24:25::0/127', mtu: 9192}
+
+client_interfaces:
+  - {enable: False}
+
+bundle_members:
+  - {enable: true, id: 10, descr: "DWDM 2x100G Bundle to RBB.NCS5504.23", member: HundredGigE0/0/1/2/0}
+  - {enable: true, id: 10, descr: "DWDM 2x100G Bundle to RBB.NCS5504.23", member: HundredGigE0/0/1/2/1}
+  - {enable: true, id: 20, descr: "DWDM 2x100G Bundle to RBB.NCS55A2.25", member: HundredGigE0/0/2/2/0}
+  - {enable: true, id: 20, descr: "DWDM 2x100G Bundle to RBB.NCS55A2.25", member: HundredGigE0/0/2/2/1}
+
+breakout:
+  - {enable: False}
+
+static_routes:
+  - {enable: False}
+
+mpls_te_tunnels:
+  - {enable: false }

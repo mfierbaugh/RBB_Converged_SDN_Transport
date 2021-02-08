@@ -1,0 +1,30 @@
+---
+- name: Assemble and Push configuration
+  hosts: all
+  connection: local
+  gather_facts: no
+
+  tasks:
+  - name: Assemble configuration
+    assemble: src={{ baseconfdir.path }}/ dest={{ baseconfdir.path }}/running.conf
+    changed_when: False
+    #when: commit_changes | match('0')
+    when: commit_changes == '0'
+
+    tags:
+      - deploy
+
+  - name: Push configuration with napalm
+    napalm_install_config:
+        hostname={{ ansible_host }}
+        username=admin
+        dev_os={{ os }}
+        password=cisco123
+        replace_config=true
+        config_file={{ playbook_dir }}/../compiled/{{ inventory_hostname }}/running.conf
+        commit_changes={{ commit_changes }}
+        diff_file={{ playbook_dir }}/../compiled/{{ inventory_hostname }}/diff
+    no_log: False
+
+    tags:
+      - deploy

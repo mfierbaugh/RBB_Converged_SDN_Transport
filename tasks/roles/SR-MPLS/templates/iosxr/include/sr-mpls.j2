@@ -1,0 +1,18 @@
+{% if sr %}
+segment-routing
+ global-block {{xr_srgb_start}} {{xr_srgb_end}}
+!
+{% if igp == 'isis' %}
+{% for isis in isis_instances %}
+router isis {{ isis.name }}
+ address-family ipv4 unicast
+ interface Loopback0
+  address-family ipv4 unicast
+{% if isis.sr %}
+   prefix-sid index {{id}}
+{% endif %}
+{% endfor %}
+{% endif %}
+{% endif %}
+!
+mpls oam

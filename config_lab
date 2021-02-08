@@ -1,0 +1,5 @@
+#!/bin/bash
+
+ansible-playbook -i hosts.yml converged_sdn_transport.yml -e "commit_changes=0"
+ansible-playbook -i hosts.yml converged_sdn_transport.yml -e "commit_changes=1"
+

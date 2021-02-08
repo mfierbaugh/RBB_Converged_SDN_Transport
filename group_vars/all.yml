@@ -1,0 +1,76 @@
+---
+ansible_python_interpreter: "/usr/bin/env python3"
+
+
+# Merge or Relpace configuration
+replace_config: '1'
+
+# Local user accounts 
+users:
+    - name: admin
+      secret: cisco123
+    - name: nso
+      secret: cisco123
+
+#Management Network GW address
+#management_gw: 10.89.188.1
+
+# Define IGP type
+igp: 'isis'
+
+# IGP Authentication
+Auth: false
+
+# Authenticaion Key String
+key: cisco
+
+# Enable ipv6 
+ipv6: true
+
+#enable LDP
+mpls_ldp: false
+
+#enable rsvp
+mpls_rsvp: false
+
+# Enable SR
+sr: true
+
+# PCE ip address
+pce_address: 1.1.1.20
+
+#enable MPLS TE
+mpls_te: false
+
+#EPN Manager Server for logging and snmptraps
+epnm_server: 198.18.201.11
+
+# Telemetry Configuration
+telemetry_enable: false
+telemetry_server: 172.26.14.141
+grpc_port: 57500
+
+# Define Segment Routing Global Block
+xr_srgb_start: 100000
+xr_srgb_end: 116767
+xe_srgb_start: 16000
+xe_srgb_end: 32767
+
+# Enable rLFA if LDP is enabled or TILFA if SR is enabled
+lfa: true
+
+# Define Infra addresses
+primary_dns_server: '198.18.133.1'
+primary_ntp_server: '198.18.133.1'
+secondary_ntp_server:
+
+# Access Domain unless defined by group
+AccDom: 100
+
+# Prefix for Infrastructure Loopbacks unless defined by group
+loopbackPrefix: 1.1.
+loopbackCidr: /32
+
+# prefix for P2P addresses
+interconnect_range: 10
+

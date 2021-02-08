@@ -1,0 +1,30 @@
+{% for interface in network_interfaces %}
+interface {{ interface.name }}
+  description *** To {{ interface.descr }} ***
+  mtu {{interface.mtu}}
+  ipv4 address {{ interface.ipv4 }} {{ interface.mask }}
+{% if ipv6 %}
+  ipv6 address {{ interface.ipv6 }}
+{% endif %}
+  load-interval 30
+  dampening
+  no shutdown
+!
+{% endfor %}
+!
+{% for interface in client_interfaces if interface.enable %}
+interface {{ interface.name }}
+  description *** To {{ interface.descr }} ***
+  mtu {{ interface.mtu }}
+  ipv4 address {{ interface.ipv4 }} {{ interface.mask }}
+  no shutdown
+!
+{% endfor %}
+{% for bundle in bundle_members if bundle.enable %}
+!
+interface {{ bundle.member }}
+ description {{ bundle.descr }}
+ bundle id {{ bundle.id }} mode on
+ no shutdown
+!
+{% endfor %}

@@ -1,0 +1,47 @@
+id: 12
+os: iosxr
+xr_64: true
+management_int: 0/RP0/CPU0/0
+management_ip: 198.18.200.12
+management_prefix: /24
+management_gw: 198.18.200.1
+max_sid_depth: 6
+asn: 65000
+bgp_rrc: false
+bgp_rr: false
+
+#enable LDP
+mpls_ldp: false
+ldp_over_mplste: false
+
+#enable rsvp
+mpls_rsvp: false
+
+# Enable SR
+sr: true
+mpls_te: false
+
+isis_instances:
+  - {name: RTP_LAB, id: 1, sr: true, tilfa: true}
+
+optics:
+  - {enable: false}
+
+network_interfaces:
+  - {name: HundredGigE0/0/0/28, descr: "RBB.NCS540.11 HundredGigE0/0/0/28", isis_inst: RTP_LAB, color: RED, te_metric: 120, ipv4: 10.11.12.1, mask: 255.255.255.254, ipv6: '10:11:12::1/127', mtu: 9192}
+  - {name: HundredGigE0/0/0/29, descr: "RBB.NCS540.13 HundredGigE0/0/1/0", isis_inst: RTP_LAB, color: BLUE, te_metric: 120, ipv4: 10.12.13.0, mask: 255.255.255.254, ipv6: '10:12:13::0/127', mtu: 9192}
+
+client_interfaces:
+  - {enable: False}
+
+bundle_members:
+  - {enable: False}
+
+breakout:
+  - {enable: False}
+
+static_routes:
+  - {enable: False}
+
+mpls_te_tunnels:
+  - {enable: false }

@@ -1,0 +1,68 @@
+{% for isis in isis_instances %}
+router isis {{ isis.name }}
+ set-overload-bit on-startup 300
+ is-type level-2-only
+ net 49.0010.0000.0000.{{ '%04d' % (id) }}.00
+ nsf ietf
+ log adjacency changes
+{% if isis.sr %}
+ distribute link-state
+{% endif %}
+ lsp-gen-interval maximum-wait 10000 initial-wait 20 secondary-wait 200 level 2
+ lsp-refresh-interval 65000
+ max-lsp-lifetime 65535
+{% if Auth == true %}
+ lsp-password keychain IGP-KEY level 2
+{% endif %}
+ address-family ipv4 unicast
+  metric-style wide
+  metric 100 level 2
+  ispf level 2
+{% if isis.sr %}
+  microloop avoidance
+  segment-routing mpls
+  mpls traffic-eng level-2-only
+  mpls traffic-eng router-id Loopback0
+{% endif %}
+  spf-interval maximum-wait 2000 initial-wait 50 secondary-wait 200
+  router-id Loopback0
+ !
+ address-family ipv6 unicast
+  metric-style wide
+  ispf level 2
+  spf-interval maximum-wait 2000 initial-wait 50 secondary-wait 200
+ !
+ interface Loopback0
+  passive
+  address-family ipv4 unicast
+{% for interface in network_interfaces if interface.isis_inst == isis.name %}
+ interface {{ interface.name }}
+  circuit-type level-2-only
+  bfd minimum-interval 20
+  bfd multiplier 3
+  bfd fast-detect ipv4
+  point-to-point
+{% if Auth == true %}
+  hello-password keychain IGP-KEY
+{% endif %}
+ !
+  address-family ipv4 unicast
+   metric 100 level 2
+ {% if lfa and mpls_ldp %}
+   fast-reroute per-prefix level 2
+ {% endif %}
+ {% if lfa and sr %}
+   fast-reroute per-prefix level 2
+   fast-reroute per-prefix ti-lfa
+   fast-reroute per-prefix tiebreaker node-protecting index 100
+ {% endif %}
+ {% if mpls_ldp %}
+   mpls ldp sync
+ {% endif %}
+{% if ipv6 %}
+  !
+  address-family ipv6 unicast
+   metric 100 level 2
+{% endif %}
+{% endfor %}
+{% endfor %}

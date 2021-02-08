@@ -1,0 +1,45 @@
+!
+route-policy pass-all
+  pass
+end-policy
+!
+router bgp {{asn}}
+ nsr
+ bgp router-id {{loopbackPrefix}}0.{{id}}
+ bgp update-delay 1
+ bgp graceful-restart restart-time 120
+ bgp graceful-restart stalepath-time 360
+ bgp graceful-restart
+ bfd minimum-interval 6500
+ bfd multiplier 7
+ address-family ipv4 unicast
+ !
+ address-family vpnv4 unicast
+ !
+ address-family vpnv6 unicast
+ !
+ address-family ipv4 rt-filter
+ !
+ address-family l2vpn evpn
+ !
+ !
+ neighbor-group LEAF-RRC
+  remote-as {{asn}}
+  bfd fast-detect
+  update-source Loopback0
+  !
+  address-family vpnv4 unicast
+   route-reflector-client
+  !
+  address-family vpnv6 unicast
+   route-reflector-client
+  !
+  address-family l2vpn evpn
+   route-reflector-client
+  !
+ !
+{% for host in route_reflector_clients %}
+  neighbor {{ host.ip }}
+    use neighbor-group LEAF-RRC
+  !
+{% endfor %}

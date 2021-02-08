@@ -1,0 +1,24 @@
+stages:
+  - validate
+ # - create_configs
+ # - deploy_to_test
+ # - verify_deploy_to_test
+
+lint:
+  stage: validate
+  script:
+    - ansible-lint base_config.yml
+
+# to be done after CML instance is up and running
+create_configurations:
+  stage: create_configs
+  script:
+    - echo "Creating configurations and validating configuration syntax"
+    - ansible-playbook -i hosts.yml base_config.yml -e "commit_changes=0"
+
+deploy_changes_to_test_enviroment:
+  stage: deploy_to_test
+  script:
+    - echo "Commiting configuration to Test environment"
+    - ansible-playbook -i hosts.yml base_config.yml -e "commit_changes=0"
+    - ansible-playbook -i hosts.yml base_config.yml -e "commit_changes=1"

@@ -1,0 +1,40 @@
+---
+- name: Build site configuration
+  hosts: all
+  connection: local
+  gather_facts: no
+  vars:
+    ansible_python_interpreter: "/usr/bin/env python"
+
+  pre_tasks:
+    - name: Remove old config
+      file: path={{ playbook_dir }}/compiled/{{ inventory_hostname }}/ state=absent
+      register: baseconfdir
+      changed_when: False
+      #when: commit_changes | match('0')
+      when: commit_changes == '0'
+
+      tags:
+        - base
+
+    - name: Create empty
+      file: path={{ baseconfdir.path }} state=directory
+      changed_when: False
+      #when: commit_changes | match('0')
+      when: commit_changes == '0'
+
+      tags:
+        - base
+
+    - name: Add end
+      template: src=library/end.j2 dest={{ baseconfdir.path }}/99_end.out
+      changed_when: False
+      #when: commit_changes | match('0')
+      when: commit_changes == '0'
+
+      tags:
+        - base
+
+# - import_playbook : include/get_facts.yml
+- import_playbook : include/def_roles.yml
+- import_playbook : include/assemble_push_conf.yml

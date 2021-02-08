@@ -1,0 +1,42 @@
+router isis west_access
+ address-family ipv4 unicast
+  redistribute isis east_access metric 110 
+  segment-routing prefix-sid-map advertise-local
+router isis east_access
+ address-family ipv4 unicast
+  redistribute isis west_access metric 110 
+  segment-routing prefix-sid-map advertise-local
+!
+route-policy east_to_west
+  if destination in (1.0.0.1/32 ge 32) then
+    pass
+  elseif destination in (1.0.0.2/32 ge 32) then
+    pass
+  elseif destination in (1.0.0.11/32 ge 32) then
+    pass
+  elseif destination in (1.0.0.12/32 ge 32) then
+    pass
+  else
+    drop
+  endif
+end-policy
+!
+route-policy west_to_east
+  if destination in (1.0.0.3/32 ge 32) then
+    pass
+  elseif destination in (1.0.0.4/32 ge 32) then
+    pass
+  elseif destination in (1.0.0.13/32 ge 32) then
+    pass
+  elseif destination in (1.0.0.14/32 ge 32) then
+    pass
+  else
+    drop
+  endif
+end-policy
+!
+segment-routing
+ mapping-server
+  prefix-sid-map
+   address-family ipv4
+    1.0.0.0/32 2000 range 100

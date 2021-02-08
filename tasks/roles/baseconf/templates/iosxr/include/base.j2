@@ -1,0 +1,53 @@
+hostname {{ inventory_hostname }}
+clock timezone EST America/New_York
+logging trap informational
+logging events level informational
+logging facility local7
+logging {{ epnm_server }} vrf Mgmt-intf
+logging source-interface MgmtEth{{ management_int }}
+service timestamps log datetime msec
+service timestamps debug datetime msec
+domain name cisco.com
+domain lookup disable
+!
+vrf Mgmt-intf
+ address-family ipv4 unicast
+ !
+ address-family ipv6 unicast
+ !
+!
+!
+domain vrf Mgmt-intf name-server {{ primary_dns_server }}
+domain vrf Mgmt-intf lookup source-interface MgmtEth{{ management_int }}
+!
+call-home
+ service active
+ contact smart-licensing
+ profile CiscoTAC-1
+  active
+  destination transport-method http
+ !
+!
+ntp
+ server vrf Mgmt-intf {{ primary_ntp_server }}
+ source vrf Mgmt-intf MgmtEth{{ management_int }}
+!
+ssh server v2
+ssh server vrf Mgmt-intf
+ssh timeout 120
+ssh server netconf port 830
+ssh server netconf vrf Mgmt-intf
+!
+xml agent tty
+ iteration off
+!
+netconf-yang agent
+ ssh
+!
+lldp
+!
+!
+line default
+ transport input ssh
+ exec-timeout 0 0
+!

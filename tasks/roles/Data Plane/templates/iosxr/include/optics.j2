@@ -1,0 +1,8 @@
+!
+{% for controller in optics if controller.enable %}
+controller Optics{{ controller.controller }}
+ description {{ controller.descr }}
+ dwdm-carrier 50GHz-grid frequency {{ controller.frequency }}
+ port-mode speed {{ controller.speed }} mod {{ controller.mod }} fec {{ controller.fec }} diff disable
+!
+{% endfor %}
