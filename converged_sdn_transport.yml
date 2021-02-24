@@ -36,5 +36,5 @@
         - base
 
 # - import_playbook : include/get_facts.yml
-- import_playbook : include/def_roles.yml
-- import_playbook : include/assemble_push_conf.yml
+- import_playbook : tasks/def_roles.yml
+- import_playbook : tasks/assemble_push_conf.yml
