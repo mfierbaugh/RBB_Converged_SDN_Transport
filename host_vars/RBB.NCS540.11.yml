@@ -1,6 +1,7 @@
 id: 11
 os: iosxr
-xr_64: true
+napalm_driver: iosxr_netconf
+xr_7: true
 management_int: 0/RP0/CPU0/0
 management_ip: 198.18.200.11
 management_prefix: /24
@@ -28,8 +29,8 @@ optics:
   - {enable: false}
 
 network_interfaces:
-  - {name: HundredGigE0/0/0/28, descr: "RBB.NCS540.12 HundredGigE0/0/0/28", isis_inst: RTP_LAB, color: RED, te_metric: 120, ipv4: 10.10.11.1, mask: 255.255.255.254, ipv6: '10:10:11::1/127', mtu: 9192}
-  - {name: HundredGigE0/0/0/29, descr: "RBB.NCS540.10 HundredGigE0/0/0/29", isis_inst: RTP_LAB, color: BLUE, te_metric: 120, ipv4: 10.11.12.0, mask: 255.255.255.254, ipv6: '10:11:12::0/127', mtu: 9192}
+  - {name: HundredGigE0/0/0/28, descr: "RBB.NCS540.12 HundredGigE0/0/0/28", isis_inst: RTP_LAB, color: RED, te_metric: 120, ipv4: 10.10.11.1, mask: 255.255.255.254, ipv6: '10:10:11:1/127', mtu: 9192}
+  - {name: HundredGigE0/0/0/29, descr: "RBB.NCS540.10 HundredGigE0/0/0/29", isis_inst: RTP_LAB, color: BLUE, te_metric: 120, ipv4: 10.11.12.0, mask: 255.255.255.254, ipv6: '10:11:12:0/127', mtu: 9192}
 
 client_interfaces:
   - {enable: False}

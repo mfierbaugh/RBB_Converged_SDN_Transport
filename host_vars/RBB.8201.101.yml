@@ -1,6 +1,7 @@
 id: 101
 os: iosxr
-xr_64: true
+napalm_driver: iosxr_netconf
+xr_7: true
 management_int: 0/RP0/CPU0/0
 management_ip: 198.18.200.101
 management_prefix: /24
@@ -28,11 +29,11 @@ optics:
   - {enable: false}
 
 network_interfaces:
-  - {name: FourHundredGigE0/0/0/0, descr: "RBB.8201.100 FourHundredGigE0/0/0/0", isis_inst: RTP_LAB, color: RED, te_metric: 120, ipv4: 10.100.101.1, mask: 255.255.255.254, ipv6: '10:100:101::1/127', mtu: 9192}
-  - {name: FourHundredGigE0/0/0/1, descr: "RBB.8201.102 FourHundredGigE0/0/0/1", isis_inst: RTP_LAB, color: RED, te_metric: 120, ipv4: 10.101.102.0, mask: 255.255.255.254, ipv6: '10:101:102::0/127', mtu: 9192}
-  - {name: FourHundredGigE0/0/0/2, descr: "RBB.8201.103 FourHundredGigE0/0/0/2", isis_inst: RTP_LAB, color: RED, te_metric: 120, ipv4: 10.101.103.0, mask: 255.255.255.254, ipv6: '10:101:103::0/127', mtu: 9192}
-  - {name: HundredGigE0/0/0/34, descr: "RBB.NCS5504.23 HundredGigE0/0/1/0", isis_inst: RTP_LAB, color: RED, te_metric: 120, ipv4: 10.23.101.1, mask: 255.255.255.254, ipv6: '10:23:101::1/127', mtu: 9192}
-  - {name: HundredGigE0/0/0/35, descr: "RBB.NCS5504.22 HundredGigE0/0/1/1", isis_inst: RTP_LAB, color: RED, te_metric: 120, ipv4: 10.22.101.1, mask: 255.255.255.254, ipv6: '10:22:101::1/127', mtu: 9192}
+  - {name: FourHundredGigE0/0/0/0, descr: "RBB.8201.100 FourHundredGigE0/0/0/0", isis_inst: RTP_LAB, color: RED, te_metric: 120, ipv4: 10.100.101.1, mask: 255.255.255.254, ipv6: '10:100:101:1/127', mtu: 9192}
+  - {name: FourHundredGigE0/0/0/1, descr: "RBB.8201.102 FourHundredGigE0/0/0/1", isis_inst: RTP_LAB, color: RED, te_metric: 120, ipv4: 10.101.102.0, mask: 255.255.255.254, ipv6: '10:101:102:0/127', mtu: 9192}
+  - {name: FourHundredGigE0/0/0/2, descr: "RBB.8201.103 FourHundredGigE0/0/0/2", isis_inst: RTP_LAB, color: RED, te_metric: 120, ipv4: 10.101.103.0, mask: 255.255.255.254, ipv6: '10:101:103:0/127', mtu: 9192}
+  - {name: HundredGigE0/0/0/34, descr: "RBB.NCS5504.23 HundredGigE0/0/1/0", isis_inst: RTP_LAB, color: RED, te_metric: 120, ipv4: 10.23.101.1, mask: 255.255.255.254, ipv6: '10:23:101:1/127', mtu: 9192}
+  - {name: HundredGigE0/0/0/35, descr: "RBB.NCS5504.22 HundredGigE0/0/1/1", isis_inst: RTP_LAB, color: RED, te_metric: 120, ipv4: 10.22.101.1, mask: 255.255.255.254, ipv6: '10:22:101:1/127', mtu: 9192}
 
 client_interfaces:
   - {enable: False}

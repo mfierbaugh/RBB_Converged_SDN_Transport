@@ -71,6 +71,9 @@ AccDom: 100
 loopbackPrefix: 1.1.
 loopbackCidr: /32
 
+# IPv6 prefix
+ipv6_prefix: 2001
+
 # prefix for P2P addresses
 interconnect_range: 10
 

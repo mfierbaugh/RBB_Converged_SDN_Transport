@@ -7,7 +7,10 @@ logging {{ epnm_server }} vrf Mgmt-intf
 logging source-interface MgmtEth{{ management_int }}
 service timestamps log datetime msec
 service timestamps debug datetime msec
-domain name cisco.com
+{% if not xr_7 %}
+service unsupported-transceiver
+{% endif %}
+domain name dcloud.cisco.com
 domain lookup disable
 !
 vrf Mgmt-intf

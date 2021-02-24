@@ -18,7 +18,7 @@
     napalm_install_config:
         hostname={{ ansible_host }}
         username=admin
-        dev_os={{ os }}
+        dev_os={{ napalm_driver }}
         password=cisco123
         replace_config=true
         config_file={{ playbook_dir }}/../compiled/{{ inventory_hostname }}/running.conf

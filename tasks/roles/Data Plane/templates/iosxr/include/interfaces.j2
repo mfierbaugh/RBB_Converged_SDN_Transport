@@ -4,7 +4,7 @@ interface {{ interface.name }}
   mtu {{interface.mtu}}
   ipv4 address {{ interface.ipv4 }} {{ interface.mask }}
 {% if ipv6 %}
-  ipv6 address {{ interface.ipv6 }}
+  ipv6 address {{ ipv6_prefix }}::{{ interface.ipv6 }}
 {% endif %}
   load-interval 30
   dampening
