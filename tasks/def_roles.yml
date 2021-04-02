@@ -12,6 +12,7 @@
   - BGP
   - SR-MPLS
   - MPLS_TE
+  - PCE
 
 - name: Configure Access
   hosts: Access
@@ -26,6 +27,7 @@
   - BGP
   - SR-MPLS
   - MPLS_TE
+  - PCE
 
 - name: Configure Core
   hosts: Core
@@ -49,6 +51,7 @@
   - baseconf
   - Data Plane
   - IGP
+  - BGP
   - LDP
   - SR-MPLS
   - MPLS_TE
@@ -66,14 +69,24 @@
   - SR-MPLS
   - MPLS_TE
 
-#- name: Configure SR PCE
-#  hosts: PCE
-#  gather_facts: no
-#  connection: local
-#
-#  roles:
-#  - baseconf
-#  - Data Plane
-#  - IGP
-#  - BGP
-#  - PCE
+- name: Configure SR PCE
+  hosts: PCE
+  gather_facts: no
+  connection: local
+
+  roles:
+  - baseconf
+  - Data Plane
+  - IGP
+  - PCE
+
+- name: Configure Route Reflectors
+  hosts: VRR
+  gather_facts: no
+  connection: local
+
+  roles:
+  - baseconf
+  - Data Plane
+  - IGP
+  - BGP

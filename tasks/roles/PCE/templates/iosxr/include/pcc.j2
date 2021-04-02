@@ -1,4 +1,8 @@
 segment-routing
  traffic-eng
   pcc
-   pce address ipv4 {{ pce_address }}
+{% for pce in sr_pce %}
+   pce address ipv4 {{ pce.ip }}
+    precedence {{ pce.precedence }}
+   !
+{% endfor %}

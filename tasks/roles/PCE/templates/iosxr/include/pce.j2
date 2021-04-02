@@ -1,2 +1,3 @@
 pce
- address ipv4 {{ pce_address }}
+ address ipv4 {{ loopbackPrefix }}1.{{ id }}
+ state-sync ipv4 {{ pce_peer }}

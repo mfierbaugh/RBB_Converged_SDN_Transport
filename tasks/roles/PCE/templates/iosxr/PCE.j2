@@ -2,4 +2,8 @@
 {% include "include/pce.j2" %}
 {% elif inventory_hostname in groups['ProviderEdge'] %}
 {% include "include/pcc.j2" %}
+{% elif inventory_hostname in groups['Access'] %}
+{% include "include/pcc.j2" %}
+{% elif inventory_hostname in groups['Routed_Optical'] %}
+{% include "include/pcc.j2" %}
 {% endif %}
