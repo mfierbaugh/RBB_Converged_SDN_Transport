@@ -1,3 +1,5 @@
 pce
  address ipv4 {{ loopbackPrefix }}1.{{ id }}
- state-sync ipv4 {{ pce_peer }}
+{% for host in pce_peers %}
+ state-sync ipv4 {{ host.ip }}
+{% endfor %}

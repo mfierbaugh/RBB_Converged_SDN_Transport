@@ -35,10 +35,8 @@ network_interfaces:
   - {name: HundredGigE0/1/0/0, descr: "RBB.NCS55A1.14 HundredGigE0/0/1/0", vlan: 0, isis_inst: RTP_LAB, color: RED, te_metric: 120, ipv4: 10.14.22.1, mask: 255.255.255.254, ipv6: '10:14:22:1/127', mtu: 9192}
   - {name: HundredGigE0/1/0/1, descr: "RBB.NCS55A1.15 HundredGigE0/0/1/0", vlan: 0, isis_inst: RTP_LAB, color: RED, te_metric: 120, ipv4: 10.15.22.1, mask: 255.255.255.254, ipv6: '10:15:22:1/127', mtu: 9192}
   - {name: HundredGigE0/1/0/2, descr: "RBB.NCS55A1.16 HundredGigE0/0/1/0", vlan: 0, isis_inst: RTP_LAB, color: RED, te_metric: 120, ipv4: 10.16.22.1, mask: 255.255.255.254, ipv6: '10:16:22:1/127', mtu: 9192}
-  - {name: HundredGigE0/1/0/35.2000, descr: "RBB.vRR1.50 Gig 0/0/0/1.2000", vlan: 2000, isis_inst: RTP_LAB, color: RED, te_metric: 120, ipv4: 10.22.50.0, mask: 255.255.255.254, ipv6: '10:22:50:0/127', mtu: 9192}
-  - {name: HundredGigE0/1/0/35.2001, descr: "RBB.vRR2.51 Gig 0/0/0/1.2001", vlan: 2001, isis_inst: RTP_LAB, color: RED, te_metric: 120, ipv4: 10.22.51.0, mask: 255.255.255.254, ipv6: '10:22:51:0/127', mtu: 9192}
-  - {name: HundredGigE0/1/0/35.2004, descr: "RBB.SR-PCE1.52 Gig 0/0/0/1.2004", vlan: 2004, isis_inst: RTP_LAB, color: RED, te_metric: 120, ipv4: 10.22.52.0, mask: 255.255.255.254, ipv6: '10:22:52:0/127', mtu: 9192}
-  - {name: HundredGigE0/1/0/35.2005, descr: "RBB.SR-PCE2.53 Gig 0/0/0/1.2005", vlan: 2005, isis_inst: RTP_LAB, color: RED, te_metric: 120, ipv4: 10.22.53.0, mask: 255.255.255.254, ipv6: '10:22:53:0/127', mtu: 9192}
+  - {name: HundredGigE0/1/0/35.2000, descr: "RBB.vRR-SR-PCE.52 Gig 0/0/0/0.2000", vlan: 2000, isis_inst: RTP_LAB, color: RED, te_metric: 120, ipv4: 10.22.52.0, mask: 255.255.255.254, ipv6: '10:22:52:0/127', mtu: 9192}
+  - {name: HundredGigE0/1/0/35.2001, descr: "RBB.vRR-SR-PCE.53 Gig 0/0/0/0.2001", vlan: 2001, isis_inst: RTP_LAB, color: RED, te_metric: 120, ipv4: 10.22.53.0, mask: 255.255.255.254, ipv6: '10:22:53:0/127', mtu: 9192}
 
 client_interfaces:
   - {enable: False}
@@ -53,8 +51,8 @@ static_routes:
   - {enable: False}
 
 route_reflectors:
-  - {ip: 1.1.1.50}
-  - {ip: 1.1.1.51}
+  - {ip: 1.1.1.52}
+  - {ip: 1.1.1.53}
 
 sr_pce:
   - {ip: 1.1.1.52, precedence: 1}

@@ -30,6 +30,8 @@ optics:
 
 network_interfaces:
   - {name: HundredGigE0/0/0/0, descr: "RBB.NCS540.10 HundredGigE0/0/0/28", vlan: 0, isis_inst: RTP_LAB, color: RED, te_metric: 120, ipv4: 10.10.20.1, mask: 255.255.255.254, ipv6: '10:10:20:1/127', mtu: 9192}
+  - {name: HundredGigE0/0/0/2.1000, descr: "RBB.vRR-SR-PCE.50 Gig 0/0/0/0.1000", vlan: 1000, isis_inst: RTP_LAB, color: RED, te_metric: 120, ipv4: 10.20.50.0, mask: 255.255.255.254, ipv6: '10:20:50:0/127', mtu: 9192}
+  - {name: HundredGigE0/0/0/2.1001, descr: "RBB.vRR-SR-PCE.51 Gig 0/0/0/0.1001", vlan: 1001, isis_inst: RTP_LAB, color: RED, te_metric: 120, ipv4: 10.20.51.0, mask: 255.255.255.254, ipv6: '10:20:51:0/127', mtu: 9192}
   - {name: FourHundredGigE0/0/1/0, descr: "RBB.ASR9903.21 FourHundredGigE0/0/1/0", vlan: 0, isis_inst: RTP_LAB, color: RED, te_metric: 120, ipv4: 10.20.21.0, mask: 255.255.255.254, ipv6: '10:20:21:0/127', mtu: 9192}
   - {name: FourHundredGigE0/0/1/4, descr: "RBB.8201.102 FourHundredGigE0/0/0/3", vlan: 0, isis_inst: RTP_LAB, color: RED, te_metric: 120, ipv4: 10.20.102.0, mask: 255.255.255.254, ipv6: '10:20:102:0/127', mtu: 9192}
 
@@ -53,8 +55,8 @@ route_reflectors:
   - {ip: 1.1.1.51}
 
 sr_pce:
-  - {ip: 1.1.1.52, precedence: 1}
-  - {ip: 1.1.1.53, precedence: 2}
+  - {ip: 1.1.1.50, precedence: 1}
+  - {ip: 1.1.1.51, precedence: 2} 
 
 mpls_te_tunnels:
   - {enable: false}

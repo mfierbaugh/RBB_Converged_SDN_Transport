@@ -45,8 +45,8 @@ static_routes:
   - {enable: False}
 
 route_reflectors:
-  - {ip: 1.1.1.50}
-  - {ip: 1.1.1.51}
+  - {ip: 1.1.1.52}
+  - {ip: 1.1.1.53}
 
 sr_pce:
   - {ip: 1.1.1.52, precedence: 1}

@@ -49,8 +49,8 @@ route_reflectors:
   - {ip: 1.1.1.51}
 
 sr_pce:
-  - {ip: 1.1.1.52, precedence: 1}
-  - {ip: 1.1.1.53, precedence: 2}
+  - {ip: 1.1.1.50, precedence: 1}
+  - {ip: 1.1.1.51, precedence: 2}
 
 mpls_te_tunnels:
   - {enable: false }
