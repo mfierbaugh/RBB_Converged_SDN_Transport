@@ -1,7 +1,7 @@
 id: 53
 os: iosxr
 napalm_driver: iosxr_netconf
-xr_7: true
+xr_7: false
 management_int: 0/RP0/CPU0/0
 management_ip: 198.18.200.53
 management_prefix: /24
@@ -11,6 +11,9 @@ asn: 65000
 bgp_rrc: false
 bgp_rr: true
 
+#telemetry 
+telemetry_enable: false
+ 
 #enable LDP
 #mpls_ldp: false
 ldp_over_mplste: false

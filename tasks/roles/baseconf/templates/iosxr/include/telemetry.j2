@@ -1,7 +1,9 @@
+{% if not xr_7 %}
 !
 tpa
  vrf Mgmt-intf
   address-family ipv4
+   default-route mgmt
    protection
     allow protocol tcp local-port 57500 interface mgmtEth{{ management_int }} local-address {{ management_ip }}/32 remote-address {{ telemetry_server }}/32
    !
@@ -13,6 +15,8 @@ grpc
  vrf Mgmt-intf
  port {{grpc_port}}
  no-tls
+!
+{% endif %}
 !
 telemetry model-driven
  destination-group DGroup1

@@ -11,6 +11,9 @@ asn: 65000
 bgp_rrc: false
 bgp_rr: false
 
+#telemetry 
+telemetry_enable: true
+ 
 #enable LDP
 #mpls_ldp: false
 ldp_over_mplste: false

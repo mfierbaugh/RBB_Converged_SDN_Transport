@@ -34,6 +34,7 @@ call-home
 ntp
  server vrf Mgmt-intf {{ primary_ntp_server }}
  source vrf Mgmt-intf MgmtEth{{ management_int }}
+ update-calendar
 !
 ssh server v2
 ssh server vrf Mgmt-intf
