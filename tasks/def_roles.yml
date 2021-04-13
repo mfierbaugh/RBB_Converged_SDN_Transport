@@ -11,6 +11,7 @@
   - LDP
   - BGP
   - SR-MPLS
+  - SR-TE
   - MPLS_TE
   - PCE
 
@@ -26,6 +27,7 @@
   - LDP
   - BGP
   - SR-MPLS
+  - SR-TE
   - MPLS_TE
   - PCE
 
@@ -40,6 +42,7 @@
   - IGP
   - LDP
   - SR-MPLS
+  - SR-TE
   - MPLS_TE
 
 - name: Configure Routed Optical Nodes
@@ -54,6 +57,7 @@
   - BGP
   - LDP
   - SR-MPLS
+  - SR-TE
   - MPLS_TE
 
 - name: Configure ASBR
@@ -67,6 +71,7 @@
   - IGP
   - LDP
   - SR-MPLS
+  - SR-TE
   - MPLS_TE
 
 - name: Configure SR PCE

@@ -5,7 +5,7 @@ end-policy
 !
 router bgp {{asn}}
  nsr
- bgp router-id {{loopbackPrefix}}0.{{id}}
+ bgp router-id {{loopbackPrefix}}1.{{id}}
  bgp update-delay 1
  bgp graceful-restart restart-time 120
  bgp graceful-restart stalepath-time 360

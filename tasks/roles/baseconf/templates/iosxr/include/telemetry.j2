@@ -57,6 +57,10 @@ telemetry model-driven
   sensor-path Cisco-IOS-XR-infra-statsd-oper:infra-statistics/interfaces/interface/latest/ge
   sensor-path Cisco-IOS-XR-infra-statsd-oper:infra-statistics/interfaces/interface/latest/generic-counters
  !
+ sensor-group segment-routing
+  sensor-path Cisco-IOS-XR-infra-xtc-agent-oper:xtc/policy-summary
+  sensor-path Cisco-IOS-XR-infra-xtc-agent-oper:xtc/topology-summaries/topology-summary
+ !
  subscription health
   sensor-group-id health strict-timer
   sensor-group-id health sample-interval 30000
@@ -84,6 +88,12 @@ telemetry model-driven
  subscription interfaces
   sensor-group-id interfaces strict-timer
   sensor-group-id interfaces sample-interval 30000
+  destination-id DGroup1
+  source-interface mgmtEth{{ management_int }} 
+ !
+ subscription segment-routing
+  sensor-group-id segment-routing strict-timer
+  sensor-group-id segment-routing sample-interval 30000
   destination-id DGroup1
   source-interface mgmtEth{{ management_int }} 
  !

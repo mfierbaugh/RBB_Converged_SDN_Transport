@@ -46,7 +46,7 @@ mpls_te: false
 epnm_server: 198.18.201.11
 
 # Telemetry Configuration
-telemetry_server: 198.18.201.17
+telemetry_server: 198.18.201.18
 grpc_port: 57500
 
 # Define Segment Routing Global Block

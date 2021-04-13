@@ -64,3 +64,5 @@ sr_pce:
 mpls_te_tunnels:
   - {enable: false}
 
+sr_policy:
+  - { enable: false }
