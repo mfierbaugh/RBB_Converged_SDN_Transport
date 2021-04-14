@@ -3,8 +3,6 @@
   hosts: all
   connection: local
   gather_facts: no
-  vars:
-    ansible_python_interpreter: "/usr/bin/env python"
 
   pre_tasks:
     - name: Remove old config
