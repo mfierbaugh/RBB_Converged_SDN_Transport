@@ -3,6 +3,6 @@
   template: src={{ os }}/PCE.j2 dest={{ baseconfdir.path }}/04_PCE.out
   changed_when: False
   #when: commit_changes | match('0')
-  when: commit_changes == '0'
+  #when: commit_changes == '0'
   tags:
     - SR
