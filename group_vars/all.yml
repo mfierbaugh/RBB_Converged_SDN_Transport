@@ -71,7 +71,7 @@ radius_acct_port: 1813
 # Access Domain unless defined by group
 AccDom: 100
 
-# Prefix for Infrastructure Loopbacks unless defined by group
+# Prefix for Infrastructure Loopbacks unless defined by grou
 loopbackPrefix: 1.1.
 loopbackCidr: /32
 
