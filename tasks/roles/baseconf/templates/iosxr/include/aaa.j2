@@ -6,3 +6,16 @@ username {{ user.name }}
 !
 {% endfor %}
 !
+radius source-interface MgmtEth{{ management_int }} vrf Mgmt-intf
+radius-server host {{ radius_server }} auth-port {{ radius_auth_port }} acct-port {{ radius_acct_port }}
+ key 7 104D000A061843595F
+!
+aaa accounting exec default start-stop group RBB_LAB
+aaa group server radius RBB_LAB
+ server {{ radius_server }} auth-port {{ radius_auth_port }} acct-port {{ radius_acct_port }}
+ vrf Mgmt-intf
+ source-interface MgmtEth{{ management_int }}
+!
+aaa authorization exec default local group RBB_LAB
+aaa authentication login default local group RBB_LAB
+!
