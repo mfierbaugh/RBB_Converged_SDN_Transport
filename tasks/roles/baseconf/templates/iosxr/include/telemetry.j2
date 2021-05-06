@@ -61,6 +61,9 @@ telemetry model-driven
   sensor-path Cisco-IOS-XR-infra-xtc-agent-oper:xtc/policy-summary
   sensor-path Cisco-IOS-XR-infra-xtc-agent-oper:xtc/topology-summaries/topology-summary
  !
+ sensor-group dataplane-monitor
+  sensor-path Cisco-IOS-XR-platforms-ofa-oper:ofa/stats/nodes/node
+ !
  subscription health
   sensor-group-id health strict-timer
   sensor-group-id health sample-interval 30000
