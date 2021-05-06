@@ -100,4 +100,9 @@ telemetry model-driven
   destination-id DGroup1
   source-interface mgmtEth{{ management_int }} 
  !
+ subscription dataplane-monitor
+  sensor-group-id dataplane-monitor strict-timer
+  sensor-group-id dataplane-monitor sample-interval 30000
+  destination-id DGroup1
+  source-interface mgmtEth{{ management_int }} 
 !
