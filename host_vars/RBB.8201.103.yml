@@ -32,11 +32,11 @@ optics:
   - {enable: false}
 
 network_interfaces:
-  - {name: FourHundredGigE0/0/0/0, descr: "RBB.8201.102 FourHundredGigE0/0/0/0", vlan: 0, isis_inst: RTP_LAB, color: RED, te_metric: 120, ipv4: 10.102.103.1, mask: 255.255.255.254, ipv6: '10:102:103:1/127', mtu: 9192}
-  - {name: FourHundredGigE0/0/0/1, descr: "RBB.ASR9903.21 FourHundredGigE0/0/1/8", vlan: 0, isis_inst: RTP_LAB, color: RED, te_metric: 120, ipv4: 10.21.103.1, mask: 255.255.255.254, ipv6: '10:21:103:1/127', mtu: 9192}
-  - {name: FourHundredGigE0/0/0/2, descr: "RBB.8201.101 FourHundredGigE0/0/0/2", vlan: 0, isis_inst: RTP_LAB, color: RED, te_metric: 120, ipv4: 10.101.103.1, mask: 255.255.255.254, ipv6: '10:101:103:1/127', mtu: 9192}
-  - {name: FourHundredGigE0/0/0/3, descr: "RBB.8201.100 FourHundredGigE0/0/0/3", vlan: 0, isis_inst: RTP_LAB, color: RED, te_metric: 120, ipv4: 10.100.103.1, mask: 255.255.255.254, ipv6: '10:100:103:1/127', mtu: 9192}
-  - {name: HundredGigE0/0/0/35, descr: "RBB.NCS5504.24 HundredGigE0/0/1/0", vlan: 0, isis_inst: RTP_LAB, color: RED, te_metric: 120, ipv4: 10.24.103.1, mask: 255.255.255.254, ipv6: '10:24:103:1/127', mtu: 9192}
+  - {name: FourHundredGigE0/0/0/0, descr: "RBB.8201.102 FourHundredGigE0/0/0/0", vlan: 0, isis_inst: RTP_LAB, color: RED, igp_metric: 50, te_metric: 120, ipv4: 10.102.103.1, mask: 255.255.255.254, ipv6: '10:102:103:1/127', mtu: 9192}
+  - {name: FourHundredGigE0/0/0/1, descr: "RBB.ASR9903.21 FourHundredGigE0/0/1/8", vlan: 0, isis_inst: RTP_LAB, color: RED, igp_metric: 50, te_metric: 120, ipv4: 10.21.103.1, mask: 255.255.255.254, ipv6: '10:21:103:1/127', mtu: 9192}
+  - {name: FourHundredGigE0/0/0/2, descr: "RBB.8201.101 FourHundredGigE0/0/0/2", vlan: 0, isis_inst: RTP_LAB, color: RED, igp_metric: 50, te_metric: 120, ipv4: 10.101.103.1, mask: 255.255.255.254, ipv6: '10:101:103:1/127', mtu: 9192}
+  - {name: FourHundredGigE0/0/0/3, descr: "RBB.8201.100 FourHundredGigE0/0/0/3", vlan: 0, isis_inst: RTP_LAB, color: RED, igp_metric: 50, te_metric: 120, ipv4: 10.100.103.1, mask: 255.255.255.254, ipv6: '10:100:103:1/127', mtu: 9192}
+  - {name: HundredGigE0/0/0/35, descr: "RBB.NCS5504.24 HundredGigE0/0/1/0", vlan: 0, isis_inst: RTP_LAB, color: RED, igp_metric: 200, te_metric: 120, ipv4: 10.24.103.1, mask: 255.255.255.254, ipv6: '10:24:103:1/127', mtu: 9192}
 
 client_interfaces:
   - {enable: False}

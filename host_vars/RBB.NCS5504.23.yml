@@ -33,17 +33,17 @@ optics:
   - {enable: true, controller: 0/0/2/2, descr: "CFP2 DWDM - MD48-ODDE - RBB.NCS55A2.26 Optics 0/0/1/2", frequency: 19590, speed: 200G, mod: 16qam, fec: 15sdfec}
 
 network_interfaces:
-  - {name: HundredGigE0/0/1/0, descr: "RBB.8201.101 HundredGigE0/0/0/34", vlan: 0, isis_inst: RTP_LAB, color: RED, te_metric: 120, ipv4: 10.23.101.0, mask: 255.255.255.254, ipv6: '10:23:101:0/127', mtu: 9192}
-  - {name: HundredGigE0/0/1/1, descr: "RBB.8201.100 HundredGigE0/0/0/34", vlan: 0, isis_inst: RTP_LAB, color: RED, te_metric: 120, ipv4: 10.23.100.0, mask: 255.255.255.254, ipv6: '10:23:100:0/127', mtu: 9192}
-  - {name: HundredGigE0/0/1/3, descr: "RBB.NCS55A2.25 HundredGigE0/0/1/0", vlan: 0, isis_inst: RTP_LAB, color: RED, te_metric: 120, ipv4: 10.23.25.0, mask: 255.255.255.254, ipv6: '10:23:25:0/127', mtu: 9192}
-  - {name: HundredGigE0/0/2/0, descr: "RBB.NCS5504.23 HundredGigE0/0/2/0", vlan: 0, isis_inst: RTP_LAB, color: RED, te_metric: 120, ipv4: 10.22.23.1, mask: 255.255.255.254, ipv6: '10:22:23:1/127', mtu: 9192}
-  - {name: Bundle-Ether10, descr: "DWDM 2x100G Bundle to RBB.NCS5504.24", vlan: 0, isis_inst: RTP_LAB, color: RED, te_metric: 120, ipv4: 10.23.24.0, mask: 255.255.255.254, ipv6: '10:23:24:0/127', mtu: 9192}
-  - {name: Bundle-Ether20, descr: "DWDM 2x100G Bundle to RBB.NCS55A2.26", vlan: 0, isis_inst: RTP_LAB, color: RED, te_metric: 120, ipv4: 10.23.26.0, mask: 255.255.255.254, ipv6: '10:23:26:0/127', mtu: 9192}
-  - {name: HundredGigE0/1/0/0, descr: "RBB.NCS55A1.14 HundredGigE0/0/1/1", vlan: 0, isis_inst: RTP_LAB, color: RED, te_metric: 120, ipv4: 10.14.23.1, mask: 255.255.255.254, ipv6: '10:14:23:1/127', mtu: 9192}
-  - {name: HundredGigE0/1/0/1, descr: "RBB.NCS55A1.15 HundredGigE0/0/1/1", vlan: 0, isis_inst: RTP_LAB, color: RED, te_metric: 120, ipv4: 10.15.23.1, mask: 255.255.255.254, ipv6: '10:15:23:1/127', mtu: 9192}
-  - {name: HundredGigE0/1/0/2, descr: "RBB.NCS55A1.16 HundredGigE0/0/1/1", vlan: 0, isis_inst: RTP_LAB, color: RED, te_metric: 120, ipv4: 10.16.23.1, mask: 255.255.255.254, ipv6: '10:16:23:1/127', mtu: 9192}
-  - {name: HundredGigE0/1/0/35.2002, descr: "RBB.vRR-SR-PCE.52 Gig 0/0/0/0.2002", vlan: 2002, isis_inst: RTP_LAB, color: RED, te_metric: 120, ipv4: 10.23.52.0, mask: 255.255.255.254, ipv6: '10:23:52:0/127', mtu: 9192}
-  - {name: HundredGigE0/1/0/35.2003, descr: "RBB.vRR-SR-PCE.53 Gig 0/0/0/0.2003", vlan: 2003, isis_inst: RTP_LAB, color: RED, te_metric: 120, ipv4: 10.23.53.0, mask: 255.255.255.254, ipv6: '10:23:53:0/127', mtu: 9192}
+  - {name: HundredGigE0/0/1/0, descr: "RBB.8201.101 HundredGigE0/0/0/34", vlan: 0, isis_inst: RTP_LAB, color: RED, igp_metric: 200, te_metric: 120, ipv4: 10.23.101.0, mask: 255.255.255.254, ipv6: '10:23:101:0/127', mtu: 9192}
+  - {name: HundredGigE0/0/1/1, descr: "RBB.8201.100 HundredGigE0/0/0/34", vlan: 0, isis_inst: RTP_LAB, color: RED, igp_metric: 200, te_metric: 120, ipv4: 10.23.100.0, mask: 255.255.255.254, ipv6: '10:23:100:0/127', mtu: 9192}
+  - {name: HundredGigE0/0/1/3, descr: "RBB.NCS55A2.25 HundredGigE0/0/1/0", vlan: 0, isis_inst: RTP_LAB, color: RED, igp_metric: 200, te_metric: 120, ipv4: 10.23.25.0, mask: 255.255.255.254, ipv6: '10:23:25:0/127', mtu: 9192}
+  - {name: HundredGigE0/0/2/0, descr: "RBB.NCS5504.23 HundredGigE0/0/2/0", vlan: 0, isis_inst: RTP_LAB, color: RED, igp_metric: 200, te_metric: 120, ipv4: 10.22.23.1, mask: 255.255.255.254, ipv6: '10:22:23:1/127', mtu: 9192}
+  - {name: Bundle-Ether10, descr: "DWDM 2x100G Bundle to RBB.NCS5504.24", vlan: 0, isis_inst: RTP_LAB, color: RED, igp_metric: 100, te_metric: 120, ipv4: 10.23.24.0, mask: 255.255.255.254, ipv6: '10:23:24:0/127', mtu: 9192}
+  - {name: Bundle-Ether20, descr: "DWDM 2x100G Bundle to RBB.NCS55A2.26", vlan: 0, isis_inst: RTP_LAB, color: RED, igp_metric: 100, te_metric: 120, ipv4: 10.23.26.0, mask: 255.255.255.254, ipv6: '10:23:26:0/127', mtu: 9192}
+  - {name: HundredGigE0/1/0/0, descr: "RBB.NCS55A1.14 HundredGigE0/0/1/1", vlan: 0, isis_inst: RTP_LAB, color: RED, igp_metric: 200, te_metric: 120, ipv4: 10.14.23.1, mask: 255.255.255.254, ipv6: '10:14:23:1/127', mtu: 9192}
+  - {name: HundredGigE0/1/0/1, descr: "RBB.NCS55A1.15 HundredGigE0/0/1/1", vlan: 0, isis_inst: RTP_LAB, color: RED, igp_metric: 200, te_metric: 120, ipv4: 10.15.23.1, mask: 255.255.255.254, ipv6: '10:15:23:1/127', mtu: 9192}
+  - {name: HundredGigE0/1/0/2, descr: "RBB.NCS55A1.16 HundredGigE0/0/1/1", vlan: 0, isis_inst: RTP_LAB, color: RED, igp_metric: 200, te_metric: 120, ipv4: 10.16.23.1, mask: 255.255.255.254, ipv6: '10:16:23:1/127', mtu: 9192}
+  - {name: HundredGigE0/1/0/35.2002, descr: "RBB.vRR-SR-PCE.52 Gig 0/0/0/0.2002", vlan: 2002, isis_inst: RTP_LAB, color: RED, igp_metric: 200, te_metric: 120, ipv4: 10.23.52.0, mask: 255.255.255.254, ipv6: '10:23:52:0/127', mtu: 9192}
+  - {name: HundredGigE0/1/0/35.2003, descr: "RBB.vRR-SR-PCE.53 Gig 0/0/0/0.2003", vlan: 2003, isis_inst: RTP_LAB, color: RED, igp_metric: 200, te_metric: 120, ipv4: 10.23.53.0, mask: 255.255.255.254, ipv6: '10:23:53:0/127', mtu: 9192}
 
 client_interfaces:
   - {enable: False}

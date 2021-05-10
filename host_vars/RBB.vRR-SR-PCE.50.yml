@@ -32,11 +32,11 @@ optics:
   - {enable: false}
 
 network_interfaces:
-  - {name: GigabitEthernet0/0/0/0.1000, descr: "RBB.ASR9903.20 HundredGigE0/0/0/2.1000", vlan: 1000, isis_inst: RTP_LAB, color: RED, te_metric: 120, ipv4: 10.20.50.1, mask: 255.255.255.254, ipv6: '10:20:50:1/127', mtu: 9192}
-  - {name: GigabitEthernet0/0/0/0.1002, descr: "RBB.ASR9903.21 HundredGigE0/0/0/2.1002", vlan: 1002, isis_inst: RTP_LAB, color: RED, te_metric: 120, ipv4: 10.21.50.1, mask: 255.255.255.254, ipv6: '10:21:50:1/127', mtu: 9192}
-  - {name: GigabitEthernet0/0/0/2.1000, descr: "RBB.vRR-SR-PCE.51 GigabitEthernet0/0/0/2.1000", vlan: 1000, isis_inst: RTP_LAB, color: RED, te_metric: 120, ipv4: 10.50.51.0, mask: 255.255.255.254, ipv6: '10:50:51:0/127', mtu: 9192}
-  - {name: GigabitEthernet0/0/0/2.1001, descr: "RBB.vRR-SR-PCE.52 GigabitEthernet0/0/0/2.1001", vlan: 1001, isis_inst: RTP_LAB, color: RED, te_metric: 120, ipv4: 10.50.52.0, mask: 255.255.255.254, ipv6: '10:50:52:0/127', mtu: 9192}
-  - {name: GigabitEthernet0/0/0/2.1002, descr: "RBB.vRR-SR-PCE.53 GigabitEthernet0/0/0/2.1002", vlan: 1002, isis_inst: RTP_LAB, color: RED, te_metric: 120, ipv4: 10.50.53.0, mask: 255.255.255.254, ipv6: '10:50:53:0/127', mtu: 9192}
+  - {name: GigabitEthernet0/0/0/0.1000, descr: "RBB.ASR9903.20 HundredGigE0/0/0/2.1000", vlan: 1000, isis_inst: RTP_LAB, color: RED, igp_metric: 2000, te_metric: 120, ipv4: 10.20.50.1, mask: 255.255.255.254, ipv6: '10:20:50:1/127', mtu: 9192}
+  - {name: GigabitEthernet0/0/0/0.1002, descr: "RBB.ASR9903.21 HundredGigE0/0/0/2.1002", vlan: 1002, isis_inst: RTP_LAB, color: RED, igp_metric: 2000, te_metric: 120, ipv4: 10.21.50.1, mask: 255.255.255.254, ipv6: '10:21:50:1/127', mtu: 9192}
+  - {name: GigabitEthernet0/0/0/2.1000, descr: "RBB.vRR-SR-PCE.51 GigabitEthernet0/0/0/2.1000", vlan: 1000, isis_inst: RTP_LAB, color: RED, igp_metric: 2000, te_metric: 120, ipv4: 10.50.51.0, mask: 255.255.255.254, ipv6: '10:50:51:0/127', mtu: 9192}
+  - {name: GigabitEthernet0/0/0/2.1001, descr: "RBB.vRR-SR-PCE.52 GigabitEthernet0/0/0/2.1001", vlan: 1001, isis_inst: RTP_LAB, color: RED, igp_metric: 2000, te_metric: 120, ipv4: 10.50.52.0, mask: 255.255.255.254, ipv6: '10:50:52:0/127', mtu: 9192}
+  - {name: GigabitEthernet0/0/0/2.1002, descr: "RBB.vRR-SR-PCE.53 GigabitEthernet0/0/0/2.1002", vlan: 1002, isis_inst: RTP_LAB, color: RED, igp_metric: 2000, te_metric: 120, ipv4: 10.50.53.0, mask: 255.255.255.254, ipv6: '10:50:53:0/127', mtu: 9192}
 
 client_interfaces:
   - {enable: False}

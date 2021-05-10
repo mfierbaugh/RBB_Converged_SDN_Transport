@@ -33,9 +33,9 @@ optics:
   - {enable: true, controller: 0/0/2/2, descr: "CFP2 DWDM - MD48-ODDE - RBB.NCS55A2.26 Optics 0/0/2/2", frequency: 19580, speed: 200G, mod: 16qam, fec: 15sdfec}
 
 network_interfaces:
-  - {name: HundredGigE0/0/1/0, descr: "RBB.NCS5504.23 HundredGigE0/1/0/3", vlan: 0, isis_inst: RTP_LAB, color: RED, te_metric: 120, ipv4: 10.23.25.1, mask: 255.255.255.254, ipv6: '10:23:25:1/127', mtu: 9192}
-  - {name: Bundle-Ether10, descr: "DWDM 2x100G Bundle to RBB.NCS5504.24", vlan: 0, isis_inst: RTP_LAB, color: RED, te_metric: 120, ipv4: 10.24.25.1, mask: 255.255.255.254, ipv6: '10:24:25:1/127', mtu: 9192}
-  - {name: Bundle-Ether20, descr: "DWDM 2x100G Bundle to RBB.NCS55A2.26", vlan: 0, isis_inst: RTP_LAB, color: RED, te_metric: 120, ipv4: 10.25.26.0, mask: 255.255.255.254, ipv6: '10:25:26:0/127', mtu: 9192}
+  - {name: HundredGigE0/0/1/0, descr: "RBB.NCS5504.23 HundredGigE0/1/0/3", vlan: 0, isis_inst: RTP_LAB, color: RED, igp_metric: 200, te_metric: 120, ipv4: 10.23.25.1, mask: 255.255.255.254, ipv6: '10:23:25:1/127', mtu: 9192}
+  - {name: Bundle-Ether10, descr: "DWDM 2x100G Bundle to RBB.NCS5504.24", vlan: 0, isis_inst: RTP_LAB, color: RED, igp_metric: 100, te_metric: 120, ipv4: 10.24.25.1, mask: 255.255.255.254, ipv6: '10:24:25:1/127', mtu: 9192}
+  - {name: Bundle-Ether20, descr: "DWDM 2x100G Bundle to RBB.NCS55A2.26", vlan: 0, isis_inst: RTP_LAB, color: RED, igp_metric: 100, te_metric: 120, ipv4: 10.25.26.0, mask: 255.255.255.254, ipv6: '10:25:26:0/127', mtu: 9192}
 
 client_interfaces:
   - {enable: False}
