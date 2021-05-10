@@ -47,7 +47,7 @@ router isis {{ isis.name }}
 {% endif %}
  !
   address-family ipv4 unicast
-   metric 100 level 2
+   metric {{ interface.igp_metric }} level 2
  {% if lfa and mpls_ldp %}
    fast-reroute per-prefix level 2
  {% endif %}
@@ -62,7 +62,7 @@ router isis {{ isis.name }}
 {% if ipv6 %}
   !
   address-family ipv6 unicast
-   metric 100 level 2
+   metric {{ interface.igp_metric }} level 2
 {% endif %}
 {% endfor %}
 {% endfor %}
