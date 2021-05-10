@@ -1,6 +1,6 @@
 ---
-- name: Configure Provider Edge
-  hosts: ProviderEdge
+- name: Configure Baseconfig Dataplane and IGP for all devices
+  hosts: all
   gather_facts: no
   connection: local
 
@@ -8,6 +8,13 @@
   - baseconf
   - Data Plane
   - IGP
+
+- name: Configure Provider Edge
+  hosts: ProviderEdge
+  gather_facts: no
+  connection: local
+
+  roles:
   - LDP
   - BGP
   - SR-MPLS
@@ -21,9 +28,6 @@
   connection: local
 
   roles:
-  - baseconf
-  - Data Plane
-  - IGP
   - LDP
   - BGP
   - SR-MPLS
@@ -37,9 +41,6 @@
   connection: local
 
   roles:
-  - baseconf
-  - Data Plane
-  - IGP
   - LDP
   - SR-MPLS
   - SR-TE
@@ -51,9 +52,6 @@
   connection: local
   
   roles:
-  - baseconf
-  - Data Plane
-  - IGP
   - BGP
   - LDP
   - SR-MPLS
@@ -66,9 +64,6 @@
   connection: local
 
   roles:
-  - baseconf
-  - Data Plane
-  - IGP
   - LDP
   - SR-MPLS
   - SR-TE
@@ -80,9 +75,6 @@
   connection: local
 
   roles:
-  - baseconf
-  - Data Plane
-  - IGP
   - PCE
 
 - name: Configure Route Reflectors
@@ -91,7 +83,4 @@
   connection: local
 
   roles:
-  - baseconf
-  - Data Plane
-  - IGP
   - BGP
