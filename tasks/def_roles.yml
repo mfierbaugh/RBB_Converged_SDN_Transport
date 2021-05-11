@@ -55,24 +55,13 @@
   connection: local
   
   roles:
+  - LDP
   - BGP
-  - LDP
   - SR-MPLS
   - SR-TE
   - SR-PM
   - MPLS_TE
-
-- name: Configure ASBR
-  hosts: ASBR
-  gather_facts: no
-  connection: local
-
-  roles:
-  - LDP
-  - SR-MPLS
-  - SR-TE
-  - SR-PM
-  - MPLS_TE
+  - PCE
 
 - name: Configure SR PCE
   hosts: PCE
