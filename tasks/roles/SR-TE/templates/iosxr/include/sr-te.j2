@@ -13,6 +13,10 @@ mpls traffic-eng
 !
 segment-routing
  traffic-eng
+{% for interface in network_interfaces %}
+  interface {{ interface.name }}
+   metric {{ interface.te_metric }}
+{% endfor %}
 {% for policy in sr_policy if policy.enable %}
   policy {{policy.name}}
    color {{policy.color}} end-point ipv4 {{policy.endpoint}}

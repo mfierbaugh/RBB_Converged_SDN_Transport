@@ -13,4 +13,7 @@ router isis {{ isis.name }}
 {% endfor %}
 {% endif %}
 !
-mpls oam
+mpls oam 
+  dpm
+   pps 10 
+   interval 60 
