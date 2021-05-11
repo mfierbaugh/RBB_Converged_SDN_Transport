@@ -13,7 +13,7 @@ users:
       secret: cisco123
 
 #Management Network GW address
-#management_gw: 10.89.188.1
+management_gw: 198.18.200.1
 
 # Define IGP type
 igp: 'isis'
@@ -25,22 +25,34 @@ Auth: false
 key: cisco
 
 # Enable ipv6 
-ipv6: true
-
-#enable LDP
-mpls_ldp: false
-
-#enable rsvp
-mpls_rsvp: false
+ipv6: 'true'
 
 # Enable SR
-sr: true
+sr: 'true'
+
+# Enable SR Performance Monitoring
+sr_pm: 'true'
+
+# Enable rLFA if LDP is enabled or TILFA if SR is enabled
+lfa: 'true'
+
+#enable LDP
+mpls_ldp: 'false'
+
+#enable rsvp
+mpls_rsvp: 'false'
+
+# Enable MPLS Traffic Engineering
+mpls_te: 'false'
+
+# enable ldp over mpls traffic engineering tunnels
+ldp_over_mplste: 'false'
+
+#telemetry 
+telemetry_enable: 'true'
 
 # PCE ip address
 pce_address: 1.1.1.20
-
-#enable MPLS TE
-mpls_te: false
 
 #EPN Manager Server for logging and snmptraps
 epnm_server: 198.18.201.11
@@ -54,9 +66,6 @@ xr_srgb_start: 100000
 xr_srgb_end: 116767
 xe_srgb_start: 16000
 xe_srgb_end: 32767
-
-# Enable rLFA if LDP is enabled or TILFA if SR is enabled
-lfa: true
 
 # Define Infra addresses
 primary_dns_server: '198.18.133.1'

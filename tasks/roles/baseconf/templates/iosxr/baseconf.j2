@@ -6,7 +6,7 @@
 !
 {% include "include/snmp.j2" %}
 !
-{% if telemetry_enable %}
+{% if telemetry_enable == 'true' %}
 {% include "include/telemetry.j2" %}
 {% endif %}
 !

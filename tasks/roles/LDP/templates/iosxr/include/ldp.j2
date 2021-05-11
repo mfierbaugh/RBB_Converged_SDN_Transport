@@ -1,0 +1,54 @@
+mpls ldp
+ log
+  hello-adjacency
+  neighbor
+  nsr
+  graceful-restart
+ !
+ nsr
+ graceful-restart
+ igp sync delay on-session-up 5
+ router-id {{loopbackPrefix}}1.{{id}}
+ address-family ipv4
+  label
+   local
+    advertise
+     explicit-null
+    !
+   !
+  !
+ !
+ {% for interface in network_interfaces %}
+ interface {{interface.name}}
+ !
+{% endfor %}
+!
+exit
+{% endif %}
+{% if ldp_over_mplste == 'true' %}
+mpls ldp
+ log
+  hello-adjacency
+  neighbor
+  nsr
+  graceful-restart
+ !
+ nsr
+ graceful-restart
+ igp sync delay on-session-up 5
+ router-id {{loopbackPrefix}}0.{{id}}
+ address-family ipv4
+  label
+   local
+    advertise
+     explicit-null
+    !
+   !
+  !
+ !
+ {% for tunnel in mpls_te_tunnels if tunnel.enable %}
+ interface tunnel-te{{tunnel.id}}
+ !
+{% endfor %}
+!
+exit

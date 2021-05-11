@@ -5,25 +5,10 @@ xr_7: true
 management_int: 0/RP0/CPU0/0
 management_ip: 198.18.200.10
 management_prefix: /24
-management_gw: 198.18.200.1
 max_sid_depth: 6
 asn: 65000
 bgp_rrc: true
 bgp_rr: false
-
-#telemetry 
-telemetry_enable: true
- 
-#enable LDP
-#mpls_ldp: false
-ldp_over_mplste: false
-
-#enable rsvp
-mpls_rsvp: false
-
-# Enable SR
-#sr: true
-mpls_te: false
 
 isis_instances:
   - {name: RTP_LAB, id: 1, sr: true, tilfa: true}

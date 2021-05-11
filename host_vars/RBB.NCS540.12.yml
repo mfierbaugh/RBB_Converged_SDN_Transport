@@ -11,20 +11,6 @@ asn: 65000
 bgp_rrc: true
 bgp_rr: false
 
-#telemetry 
-telemetry_enable: true
-
-#enable LDP
-#mpls_ldp: false
-ldp_over_mplste: false
-
-#enable rsvp
-mpls_rsvp: false
-
-# Enable SR
-#sr: true
-mpls_te: false
-
 isis_instances:
   - {name: RTP_LAB, id: 1, sr: true, tilfa: true}
 

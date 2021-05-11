@@ -5,31 +5,17 @@ xr_7: false
 management_int: 0/RP0/CPU0/0
 management_ip: 198.18.200.22
 management_prefix: /24
-management_gw: 198.18.200.1
 max_sid_depth: 6
 asn: 65000
 bgp_rrc: true
 bgp_rr: false
-
-#telemetry 
-telemetry_enable: true
- 
-#enable LDP
-#mpls_ldp: false
-ldp_over_mplste: false
-
-#enable rsvp
-mpls_rsvp: false
-
-# Enable SR
-#sr: true
-mpls_te: false
 
 isis_instances:
   - {name: RTP_LAB, id: 1, sr: true, tilfa: true}
 
 optics:
   - {enable: false}
+
 
 network_interfaces:
   - {name: HundredGigE0/0/1/0, descr: "RBB.8201.100 HundredGigE0/0/0/35", vlan: 0, isis_inst: RTP_LAB, color: RED, igp_metric: 200, te_metric: 120, ipv4: 10.22.100.0, mask: 255.255.255.254, ipv6: '10:22:100:0/127', mtu: 9192}

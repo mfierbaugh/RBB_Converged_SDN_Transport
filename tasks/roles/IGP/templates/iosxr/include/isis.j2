@@ -27,10 +27,12 @@ router isis {{ isis.name }}
   spf-interval maximum-wait 2000 initial-wait 50 secondary-wait 200
   router-id Loopback0
  !
+{% if ipv6 == 'true' %}
  address-family ipv6 unicast
   metric-style wide
   ispf level 2
   spf-interval maximum-wait 2000 initial-wait 50 secondary-wait 200
+{% endif %}
  !
  interface Loopback0
   passive
@@ -48,18 +50,15 @@ router isis {{ isis.name }}
  !
   address-family ipv4 unicast
    metric {{ interface.igp_metric }} level 2
- {% if lfa and mpls_ldp %}
+{% if lfa and mpls_ldp %}
    fast-reroute per-prefix level 2
- {% endif %}
- {% if lfa and sr %}
+{% endif %}
+{% if lfa == 'true' and sr == 'true' %}
    fast-reroute per-prefix level 2
    fast-reroute per-prefix ti-lfa
    fast-reroute per-prefix tiebreaker node-protecting index 100
- {% endif %}
- {% if mpls_ldp %}
-   mpls ldp sync
- {% endif %}
-{% if ipv6 %}
+{% endif %}
+{% if ipv6 == 'true' %}
   !
   address-family ipv6 unicast
    metric {{ interface.igp_metric }} level 2
