@@ -50,7 +50,7 @@ router isis {{ isis.name }}
  !
   address-family ipv4 unicast
    metric {{ interface.igp_metric }} level 2
-{% if lfa and mpls_ldp %}
+{% if lfa == 'true' and mpls_ldp == 'true' %}
    fast-reroute per-prefix level 2
 {% endif %}
 {% if lfa == 'true' and sr == 'true' %}
