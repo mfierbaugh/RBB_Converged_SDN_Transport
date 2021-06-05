@@ -5,6 +5,8 @@ logging events level informational
 logging facility local7
 logging {{ epnm_server }} vrf Mgmt-intf
 logging source-interface MgmtEth{{ management_int }}
+logging console debugging
+logging monitor debugging
 service timestamps log datetime msec
 service timestamps debug datetime msec
 {% if not xr_7 %}
@@ -41,6 +43,9 @@ ssh server vrf Mgmt-intf
 ssh timeout 120
 ssh server netconf port 830
 ssh server netconf vrf Mgmt-intf
+ssh server logging
+ssh server rate-limit 100
+ssh server session-limit 100
 !
 netconf-yang agent
  ssh
@@ -51,5 +56,8 @@ lldp
 line default
  transport input ssh
  exec-timeout 0 0
+ width 107
+ length 37
+ absolute-timeout 0
 !
 vty-pool default 0 99 line-template default

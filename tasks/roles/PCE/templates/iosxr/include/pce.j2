@@ -1,5 +1,12 @@
 pce
  address ipv4 {{ loopbackPrefix }}1.{{ id }}
+ api
+  user admin
+   password encrypted 01100F175804575D72
+  !
+  vrf Mgmt-intf
+  sibling ipv4 {{ pce_sibling }}
+ !
 {% for host in pce_peers %}
  state-sync ipv4 {{ host.ip }}
 {% endfor %}

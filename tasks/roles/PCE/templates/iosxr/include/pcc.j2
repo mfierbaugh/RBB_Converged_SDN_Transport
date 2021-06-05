@@ -1,8 +1,11 @@
 segment-routing
  traffic-eng
   pcc
+   source-address ipv4 {{ loopbackPrefix }}1.{{ id }}
 {% for pce in sr_pce %}
    pce address ipv4 {{ pce.ip }}
     precedence {{ pce.precedence }}
    !
 {% endfor %}
+   report-all
+   redundancy pcc-centric

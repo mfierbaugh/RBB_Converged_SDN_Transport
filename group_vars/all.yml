@@ -58,6 +58,9 @@ pce_address: 1.1.1.20
 #EPN Manager Server for logging and snmptraps
 epnm_server: 198.18.201.11
 
+# Crosswork Data Gateway Virtual IP
+cwdg: 198.18.201.27
+
 # Telemetry Configuration
 telemetry_server: 198.18.201.18
 grpc_port: 57500
