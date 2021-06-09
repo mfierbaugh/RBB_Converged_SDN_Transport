@@ -25,6 +25,8 @@ telemetry model-driven
    encoding self-describing-gpb
    protocol grpc no-tls
   !
+ destination-group CrossworkDG
+  vrf Mgmt-intf
   address-family ipv4 {{ cwdg }} port 9010
    encoding self-describing-gpb
    protocol tcp
@@ -68,6 +70,22 @@ telemetry model-driven
  !
  sensor-group dataplane-monitor
   sensor-path Cisco-IOS-XR-platforms-ofa-oper:ofa/stats/nodes/node
+ !
+ sensor-group cw_tunnel_traffic
+  sensor-path Cisco-IOS-XR-infra-tc-oper:traffic-collector/afs/af/counters/tunnels/tunnel
+ !
+ sensor-group cw_prefix_traffic
+  sensor-path Cisco-IOS-XR-infra-tc-oper:traffic-collector/vrf-table/default-vrf/afs/af/counters/prefixes/prefix
+ !
+ subscription sub_cw_tunnel_traffic
+  sensor-group-id cw_tunnel_traffic sample-interval 60000  
+  destination-id CrossworkDG
+  source-interface loopback0
+!
+subscription sub_cw_prefix_traffic
+  sensor-group-id cw_prefix_traffic sample-interval 60000 
+  destination-id CrossworkDG
+  source-interface loopback0
  !
  subscription health
   sensor-group-id health strict-timer
