@@ -80,12 +80,12 @@ telemetry model-driven
  subscription sub_cw_tunnel_traffic
   sensor-group-id cw_tunnel_traffic sample-interval 60000  
   destination-id CrossworkDG
-  source-interface loopback0
+  source-interface mgmtEth{{ management_int }} 
 !
 subscription sub_cw_prefix_traffic
   sensor-group-id cw_prefix_traffic sample-interval 60000 
   destination-id CrossworkDG
-  source-interface loopback0
+  source-interface mgmtEth{{ management_int }} 
  !
  subscription health
   sensor-group-id health strict-timer
