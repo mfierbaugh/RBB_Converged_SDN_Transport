@@ -63,5 +63,6 @@ router isis {{ isis.name }}
   address-family ipv6 unicast
    metric {{ interface.igp_metric }} level 2
 {% endif %}
+ !
 {% endfor %}
 {% endfor %}
