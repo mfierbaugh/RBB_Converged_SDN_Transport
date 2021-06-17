@@ -25,6 +25,18 @@ telemetry model-driven
    encoding self-describing-gpb
    protocol grpc no-tls
   !
+  destination-group CW_43dc8a5ea99529715899b4f5218408a785e40fce
+  vrf Mgmt-intf
+  address-family ipv4 198.18.201.30 port 9010
+   encoding self-describing-gpb
+   protocol tcp
+  !
+ destination-group CW_4b3c69a200668b0a8dc155caff295645c684a8f8
+  vrf Mgmt-intf
+  address-family ipv4 198.18.201.30 port 9010
+   encoding self-describing-gpb
+   protocol tcp
+  !
  !
  sensor-group health
   sensor-path Cisco-IOS-XR-shellutil-oper:system-time/uptime
@@ -59,6 +71,12 @@ telemetry model-driven
  !
  sensor-group dataplane-monitor
   sensor-path Cisco-IOS-XR-platforms-ofa-oper:ofa/stats/nodes/node
+ !
+ sensor-group CW_43dc8a5ea99529715899b4f5218408a785e40fce
+  sensor-path Cisco-IOS-XR-infra-tc-oper:traffic-collector/afs/af/counters/tunnels/tunnel
+ !
+ sensor-group CW_4b3c69a200668b0a8dc155caff295645c684a8f8
+  sensor-path Cisco-IOS-XR-infra-tc-oper:traffic-collector/vrf-table/default-vrf/afs/af/counters/prefixes/prefix
  !
  subscription health
   sensor-group-id health strict-timer
@@ -107,4 +125,14 @@ telemetry model-driven
   sensor-group-id dataplane-monitor sample-interval 30000
   destination-id DGroup1
   source-interface mgmtEth{{ management_int }} 
-!
+ !
+ subscription CW_43dc8a5ea99529715899b4f5218408a785e40fce
+  sensor-group-id CW_43dc8a5ea99529715899b4f5218408a785e40fce sample-interval 300000
+  destination-id CW_43dc8a5ea99529715899b4f5218408a785e40fce
+  source-interface MgmtEth0/RP0/CPU0/0
+ !
+ subscription CW_4b3c69a200668b0a8dc155caff295645c684a8f8
+  sensor-group-id CW_4b3c69a200668b0a8dc155caff295645c684a8f8 sample-interval 300000
+  destination-id CW_4b3c69a200668b0a8dc155caff295645c684a8f8
+  source-interface MgmtEth0/RP0/CPU0/0
+ !
