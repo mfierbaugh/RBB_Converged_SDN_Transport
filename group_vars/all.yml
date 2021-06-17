@@ -19,6 +19,9 @@ management_gw: 198.18.200.1
 # test123
 igp: 'isis'
 
+# Evaluate if unnumbered interface option should be considered in dataplane / network_interfaces hostvar
+unnumbered_interfaces: 'true'
+
 # IGP Authentication
 Auth: false
 

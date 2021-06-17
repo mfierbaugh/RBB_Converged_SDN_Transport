@@ -30,10 +30,8 @@ telemetry model-driven
   sensor-path Cisco-IOS-XR-shellutil-oper:system-time/uptime
   sensor-path Cisco-IOS-XR-wdsysmon-fd-oper:system-monitoring/cpu-utilization
   sensor-path Cisco-IOS-XR-nto-misc-oper:memory-summary/nodes/node/summary
-  sensor-path Cisco-IOS-XR-nto-misc-shmem-oper:memory-summary/nodes/node/summary
  !
  sensor-group optics
-  sensor-path Cisco-IOS-XR-controller-optics-oper:optics-oper/optics-ports/optics-port/optic
   sensor-path Cisco-IOS-XR-controller-optics-oper:optics-oper/optics-ports/optics-port/optics-info
  !
  sensor-group mpls-te
@@ -42,19 +40,17 @@ telemetry model-driven
   sensor-path Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message
  !
  sensor-group routing
-  sensor-path Cisco-IOS-XR-clns-isis-oper:isis/instances/instance/statistics-global
-  sensor-path Cisco-IOS-XR-ipv4-bgp-oper:bgp/instances/instance/instance-active/default-vrf/
-  sensor-path Cisco-IOS-XR-clns-isis-oper:isis/instances/instance/levels/level/adjacencies/a
-  sensor-path Cisco-IOS-XR-ip-rib-ipv4-oper:rib/vrfs/vrf/afs/af/safs/saf/ip-rib-route-table-
-  sensor-path Cisco-IOS-XR-fib-common-oper:fib/nodes/node/protocols/protocol/vrfs/vrf/summary
   sensor-path Cisco-IOS-XR-clns-isis-oper:isis/instances/instance/levels/level/adjacencies/adjacency
-  sensor-path Cisco-IOS-XR-ipv4-bgp-oper:bgp/instances/instance/instance-active/default-vrf/process-info
+  sensor-path Cisco-IOS-XR-clns-isis-oper:isis/instances/instance/statistics-global
   sensor-path Cisco-IOS-XR-ip-rib-ipv4-oper:rib/vrfs/vrf/afs/af/safs/saf/ip-rib-route-table-names/ip-rib-route-table-name/protocol/isis/as/information
+  sensor-path Cisco-IOS-XR-ipv4-bgp-oper:bgp/instances/instance/instance-active/default-vrf/process-info
+ !
+ sensor-group perf-mgmt
+  sensor-path Cisco-IOS-XR-perf-meas-oper:performance-measurement/nodes/node/interfaces/interface-details/interface-detail/delay-measurement-session/current-probe/probe-results
  !
  sensor-group interfaces
   sensor-path Cisco-IOS-XR-pfi-im-cmd-oper:interfaces/interface-summary
   sensor-path Cisco-IOS-XR-infra-statsd-oper:infra-statistics/interfaces/interface/data-rate
-  sensor-path Cisco-IOS-XR-infra-statsd-oper:infra-statistics/interfaces/interface/latest/ge
   sensor-path Cisco-IOS-XR-infra-statsd-oper:infra-statistics/interfaces/interface/latest/generic-counters
  !
  sensor-group segment-routing
@@ -87,6 +83,12 @@ telemetry model-driven
   sensor-group-id routing sample-interval 30000
   destination-id DGroup1
   source-interface mgmtEth{{ management_int }} 
+ !
+ subscription perf-mgmt
+  sensor-group-id perf-mgmt strict-timer
+  sensor-group-id perf-mgmt sample-interval 30000
+  destination-id DGroup1
+  source-interface MgmtEth0/RP0/CPU0/0
  !
  subscription interfaces
   sensor-group-id interfaces strict-timer

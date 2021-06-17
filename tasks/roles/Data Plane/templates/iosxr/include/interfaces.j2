@@ -5,9 +5,14 @@ interface {{ interface.name }}
 {% if interface.vlan != 0 %}
   encapsulation dot1q {{ interface.vlan }}
 {% endif %}
+{% if unnumbered_interfaces == 'true' and interface.unnumbered == true %}
+  ipv4 point-to-point
+  ipv4 unnumbered Loopback0  
+{% else %}
   ipv4 address {{ interface.ipv4 }} {{ interface.mask }}
 {% if ipv6 == 'true' %}
   ipv6 address {{ ipv6_prefix }}::{{ interface.ipv6 }}
+{% endif %}
 {% endif %}
   load-interval 30
   dampening
