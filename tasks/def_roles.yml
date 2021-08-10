@@ -71,6 +71,14 @@
   roles:
   - PCE
 
+- name: Configure Broadband Network Gateway
+  hosts: BNG
+  gather_facts: no
+  connection: local
+
+  roles:
+  - BNG
+
 - name: Configure Route Reflectors
   hosts: VRR
   gather_facts: no

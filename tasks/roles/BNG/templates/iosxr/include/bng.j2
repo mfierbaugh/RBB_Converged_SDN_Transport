@@ -1,0 +1,125 @@
+!
+radius-server host {{ car_radius_server }} auth-port {{ car_radius_auth_port }} acct-port {{ car_radius_acct_port }}
+key cisco123
+!
+aaa group server radius BNG 
+server {{ car_radius_server }} acct-port {{ car_radius_acct_port }} auth-port {{ car_radius_auth_port }}
+source-interface MgmtEth {{ management_int }}
+vrf Mgmt-intf
+!
+aaa authentication subscriber default group BNG
+aaa authorization subscriber default group BNG
+aaa accounting subscriber default group BNG
+!
+!
+!
+pool vrf default ipv4 ipoe-ipv4-dyn-pool-1
+ network 122.199.18.0/23 default-router 122.199.18.1
+!
+dhcp ipv4
+ profile dhcpv4-server server
+  lease 0 0 10
+  pool ipoe-ipv4-dyn-pool-1
+  dns-server 119.40.106.35 119.40.106.36
+  dhcp-to-aaa option list all
+ !
+ inner-cos 0
+ outer-cos 0
+{% for interface in bng_interfaces %}
+ interface {{ interface.name }} server profile dhcpv4-server
+{% endfor %}
+!
+dhcp ipv6
+ profile dhcpv6-server server
+  lease 0 0 5
+  rapid-commit
+ !
+{% for interface in bng_interfaces %}
+ interface {{ interface.name }} server profile dhcpv6-server
+{% endfor %}
+ !
+interface Loopback1
+ ipv4 address 122.199.18.1 255.255.254.0
+ ipv6 address 2401:d002:5d00::1/128
+!
+{% for interface in bng_interfaces %}
+interface {{ interface.name }}
+  description *** To {{ interface.descr }} ***
+  ipv4 point-to-point
+  ipv4 unnumbered Loopback1
+  arp learning disable
+  ipv6 nd managed-config-flag
+  ipv6 enable
+  service-policy type control subscriber subscriber-policy-1
+  encapsulation dot1q {{ interface.vlan }}
+  ipsubscriber ipv4 l2-connected
+   initiator dhcp
+   initiator unclassified-source
+  !
+  ipsubscriber ipv6 l2-connected
+   initiator dhcp
+  !
+  no shutdown
+!
+{% endfor %}
+!
+dynamic-template
+ type ipsubscriber ipoe-tmpl
+  ipv4 verify unicast source reachable-via rx
+  ipv4 unnumbered Loopback1
+  ipv6 nd managed-config-flag
+  ipv6 nd start-ra-on-ipv6-enable
+  ipv6 enable
+ !
+ type ipsubscriber static-tmpl
+  ipv4 verify unicast source reachable-via rx
+ !
+!
+aaa attribute format csid-format-1
+ format-string length 253 "%s" client-mac-address-raw
+!
+aaa attribute format ipoe-username-1
+ circuit-id
+!
+aaa attribute format static-username-1
+ mac-address
+!
+aaa radius attribute nas-port format e SSAAAPPPPPVVVVVVVVVVVVVVVVVVUUUU type 33
+aaa radius attribute nas-port format e PPPPPPPPVVVVVVVVVVVVVVVVUUUUUUUU type 36
+aaa radius attribute calling-station-id format csid-format-1
+subscriber
+ arp uncond-proxy-arp-enable
+!
+pppoe bba-group bba-group-1
+ service selection disable
+ control-packets priority 0
+!
+class-map type control subscriber match-any class-ppp
+ match protocol ppp 
+ end-class-map
+! 
+!
+class-map type control subscriber match-any class-dhcp
+ match protocol dhcpv4 dhcpv6 
+ end-class-map
+! 
+class-map type control subscriber match-any class-ppp-ds
+ match protocol ppp dhcpv6 
+ end-class-map
+! 
+policy-map type control subscriber subscriber-policy-1
+ description --- IPoE ---
+ event session-start match-all
+  class type control subscriber class-dhcp do-until-failure
+   1 activate dynamic-template ipoe-tmpl
+   2 authorize aaa list BNG format ipoe-username-1 password testing
+  ! 
+ ! 
+ event idle-timeout match-all
+  class type control subscriber class-dhcp do-until-failure
+   1 monitor
+  ! 
+ ! 
+ end-policy-map
+! 
+end

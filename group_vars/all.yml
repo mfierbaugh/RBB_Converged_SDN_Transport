@@ -79,10 +79,15 @@ primary_dns_server: '198.18.133.1'
 primary_ntp_server: '198.18.128.1'
 secondary_ntp_server:
 
-# Radius Server information
+# Infrastructure Radius Server information
 radius_server: 198.18.201.13
 radius_auth_port: 1812
 radius_acct_port: 1813
+
+# BNG authentication - Cisco Access Registrar
+car_radius_server: 198.18.201.33
+car_radius_auth_port: 1812
+car_radius_acct_port: 1813
 
 # Access Domain unless defined by group
 AccDom: 100

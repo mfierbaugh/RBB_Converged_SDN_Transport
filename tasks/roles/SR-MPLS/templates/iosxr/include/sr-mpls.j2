@@ -12,6 +12,13 @@ router isis {{ isis.name }}
 {% endif %}
 {% endfor %}
 {% endif %}
+{% if igp == 'ospf' %}
+router ospf RTP_LAB
+ address-family ipv4 unicast
+ interface Loopback0
+  address-family ipv4 unicast
+   prefix-sid index {{id}}
+{% endif %}
 !
 mpls oam 
   dpm

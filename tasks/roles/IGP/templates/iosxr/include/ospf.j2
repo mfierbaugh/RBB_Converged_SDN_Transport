@@ -1,0 +1,28 @@
+router ospf RTP_LAB
+  segment-routing mpls
+  mpls traffic-eng router-id Loopback0
+  area 0
+   mpls traffic-eng
+   segment-routing mpls
+   interface Loopback0
+    passive
+    !
+{% for interface in network_interfaces %}
+ interface {{ interface.name }}
+  bfd minimum-interval 20
+  bfd multiplier 3
+  bfd fast-detect ipv4
+  point-to-point
+ !
+  address-family ipv4 unicast
+   metric {{ interface.igp_metric }} 
+{% if lfa == 'true' and mpls_ldp == 'true' %}
+   fast-reroute per-prefix 
+{% endif %}
+{% if lfa == 'true' and sr == 'true' %}
+   fast-reroute per-prefix 
+   fast-reroute per-prefix ti-lfa
+   fast-reroute per-prefix tiebreaker node-protecting index 100
+{% endif %}
+ !
+{% endfor %}
